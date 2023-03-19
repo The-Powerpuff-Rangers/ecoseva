@@ -56,6 +56,28 @@ class MainApp extends ConsumerWidget {
   }
 }
 
+// class AuthChecker extends ConsumerWidget {
+//   static const routename = '/auth-checker';
+//   const AuthChecker({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     final authChecker = ref.watch(authProvider);
+//     return authChecker.when(
+//       data: (data) {
+//         if (data) {
+//           return const HomePage();
+//         }
+//         return const AppRegistrationScreen();
+//       },
+//       error: (error, stackTrace) {
+//         return ErrorPage(error: error, stackTrace: stackTrace);
+//       },
+//       loading: () => const SplashScreen(),
+//     );
+//   }
+// }
+
 final authProvider = FutureProvider<bool>((ref) async {
   return await ref.watch(authTokenProvider.future).then((value) => value != null);
 });
