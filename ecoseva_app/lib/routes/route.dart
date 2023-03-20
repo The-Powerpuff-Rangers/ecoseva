@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../common/login_type.dart';
 import '../main.dart';
 import '../screens/home/home_page.dart';
 import '../screens/home/home_screen.dart';
@@ -16,7 +14,6 @@ import '../screens/splash/splash_screen.dart';
 
 final routeProvider = Provider<GoRouter>((ref) {
   final authChecker = ref.watch(authProvider);
-  final loginState = ref.watch(loginTypeProvider);
   return GoRouter(
     initialLocation: '/',
     debugLogDiagnostics: true,
@@ -28,15 +25,11 @@ final routeProvider = Provider<GoRouter>((ref) {
 
       final isSplash = state.location == SplashScreen.routename;
       if (isSplash) {
-        return isAuth
-            ? HomeScreen.routename
-            : loginState == LoginType.login
-                ? LoginScreen.routename
-                : SignupScreen.routename;
+        return isAuth ? HomeScreen.routename : LoginScreen.routename;
       }
 
       final isLoggingIn = state.location == LoginScreen.routename || state.location == SignupScreen.routename;
-      if (isLoggingIn) return isAuth ? HomeScreen.routename : null;
+      if (isLoggingIn) return isAuth ? HomeScreen.routename : state.location;
 
       return isAuth ? null : SplashScreen.routename;
     },

@@ -1,9 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ecoseva_app/api/authentication.dart';
+import 'package:ecoseva_app/providers/auth_providers.dart';
+import 'package:ecoseva_app/routes/route.dart';
 import 'package:ecoseva_app/screens/profile/widgets/info_tile.dart';
 import 'package:ecoseva_app/screens/profile/widgets/profile_button.dart';
+import 'package:ecoseva_app/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../common/colors.dart';
 
@@ -53,7 +57,19 @@ class ProfileScreen extends ConsumerWidget {
           const InfoTile(),
           const InfoTile(),
           ProfileButton(
-            onTap: () {},
+            onTap: () async {
+              try {
+                await ref.read(authenticationProvider).logout();
+                ref.invalidate(authTokenProvider);
+                ref.read(routeProvider).go(SplashScreen.routename);
+              } on Exception catch (e) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(e.toString()),
+                  ),
+                );
+              }
+            },
             isDestructive: true,
             label: 'Logout',
           )

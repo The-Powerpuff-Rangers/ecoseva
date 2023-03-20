@@ -1,4 +1,3 @@
-
 import 'package:ecoseva_app/providers/auth_providers.dart';
 import 'package:ecoseva_app/providers/providers.dart';
 import 'package:ecoseva_app/routes/route.dart';
@@ -13,10 +12,18 @@ import 'common/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  const secureStorage = FlutterSecureStorage();
+  const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
   // Get the shared preferences instance before launching the app
   final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  // If Launching app for the first time, delete the database and the shared preferences
+  // FIX: https://stackoverflow.com/a/57937650/15538463
+  if (prefs.getBool('first_run') ?? true) {
+    await secureStorage.deleteAll();
+
+    await prefs.setBool('first_run', false);
+  }
 
   final container = ProviderContainer(
     overrides: [
