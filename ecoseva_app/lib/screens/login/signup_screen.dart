@@ -90,7 +90,7 @@ class SignupScreen extends ConsumerWidget {
                     final route = GoRouter.of(context);
                     try {
                       if (formKey.currentState!.validate()) {
-                        final auth = await authData.signUp(emailController.text, passwordController.text);
+                      await authData.signUp(emailController.text, passwordController.text);
 
                         ref.invalidate(authTokenProvider);
                         route.go(SplashScreen.routename);

@@ -84,7 +84,7 @@ class LoginScreen extends ConsumerWidget {
                     final route = GoRouter.of(context);
                     try {
                       if (formKey.currentState!.validate()) {
-                        final auth = await authData.login(emailController.text, passwordController.text);
+                         await authData.login(emailController.text, passwordController.text);
 
                         ref.invalidate(authTokenProvider);
 
