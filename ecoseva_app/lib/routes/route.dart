@@ -1,3 +1,4 @@
+import 'package:ecoseva_app/screens/login/create_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -28,8 +29,10 @@ final routeProvider = Provider<GoRouter>((ref) {
         return isAuth ? HomeScreen.routename : LoginScreen.routename;
       }
 
-      final isLoggingIn = state.location == LoginScreen.routename || state.location == SignupScreen.routename;
-      if (isLoggingIn) return isAuth ? HomeScreen.routename : state.location;
+      final isLoggingIn = state.location == LoginScreen.routename ||
+          state.location == SignupScreen.routename ||
+          state.location == CreateProfile.routename;
+      if (isLoggingIn) return isAuth ? HomeScreen.routename : state.subloc;
 
       return isAuth ? null : SplashScreen.routename;
     },
@@ -37,6 +40,10 @@ final routeProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/',
         builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: '/form-screen',
+        builder: (context, state) => const CreateProfile(),
       ),
       GoRoute(
         path: LoginScreen.routename,

@@ -1,15 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:ecoseva_app/providers/auth_providers.dart';
+import 'package:ecoseva_app/screens/login/create_profile.dart';
 import 'package:ecoseva_app/screens/login/widgets/signin_button.dart';
 import 'package:ecoseva_app/screens/login/widgets/text_field_widget.dart';
-import 'package:ecoseva_app/screens/splash/splash_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../api/authentication.dart';
 import '../../common/colors.dart';
 import '../../common/login_type.dart';
 import '../../gen/assets.gen.dart';
@@ -35,7 +33,7 @@ class SignupScreen extends ConsumerWidget {
     final passwordController = ref.watch(textControllerProvider('password'));
     final confirmPasswordController = ref.watch(textControllerProvider('confirmPassword'));
     final formKey = ref.watch(_formKeyProvider);
-    final authData = ref.watch(authenticationProvider);
+
     return Scaffold(body: LayoutBuilder(builder: (context, size) {
       return KeyboardDismissOnTap(
         dismissOnCapturedTaps: true,
@@ -83,17 +81,20 @@ class SignupScreen extends ConsumerWidget {
                 ),
                 SignInButton(
                   label: 'Continue',
-                  onTap: () async {
-                    // If the data does not exist. we will spawn a create a new user app.
-                    // But before that spawn the permission screen app.
-                    // If the permission exists, then no need to show them.
+                  onTap: () {
+                    if (passwordController.text != confirmPasswordController.text) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(const SnackBar(content: Text('Passwords do not match')));
+                      return;
+                    }
+
                     final route = GoRouter.of(context);
                     try {
                       if (formKey.currentState!.validate()) {
-                      await authData.signUp(emailController.text, passwordController.text);
+                        // await authData.signUp(emailController.text, passwordController.text);
 
-                        ref.invalidate(authTokenProvider);
-                        route.go(SplashScreen.routename);
+                        // ref.invalidate(authTokenProvider);
+                        route.push(CreateProfile.routename);
                       }
                     } on Exception catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error registering: $e')));

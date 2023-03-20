@@ -37,17 +37,15 @@ class Authentication {
     }
   }
 
-  Future<AccessToken> signUp(String email, String password) async {
+  Future<AccessToken> signUp(Map<String, dynamic> data) async {
     try {
-      Map<String, dynamic> data = {
-        'email': email,
-        'password': password,
-        'name': 'Test',
-        'dob': '1999-01-01',
-      };
-
       final result = await client.call(RequestType.post, '/register', data);
-      return AccessToken.fromMap(result.data);
+      final tokens = AccessToken.fromMap(result.data);
+      await Future.wait([
+        storage.write(key: 'access', value: tokens.accessToken),
+        storage.write(key: 'refresh', value: tokens.refreshToken),
+      ]);
+      return tokens;
     } on Exception catch (e) {
       log(e.toString());
       rethrow;
