@@ -70,25 +70,63 @@ final routeProvider = Provider<GoRouter>((ref) {
         ),
       ),
       ShellRoute(
-          builder: (BuildContext context, GoRouterState state, Widget child) {
-            return HomePage(child: child);
-          },
+          pageBuilder: (context, state,child) => CustomTransitionPage(
+                key: state.pageKey,
+                transitionDuration: const Duration(milliseconds: 400),
+                child:  HomePage(child: child),
+                transitionsBuilder: ((context, animation, secondaryAnimation, child) => FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOutCubic).animate(animation),
+                      child: child,
+                    )),
+              ),
           routes: [
             GoRoute(
               path: HomeScreen.routename,
-              builder: (context, state) => const HomeScreen(),
+              pageBuilder: (context, state) => CustomTransitionPage(
+                key: state.pageKey,
+                transitionDuration: const Duration(milliseconds: 400),
+                child: const HomeScreen(),
+                transitionsBuilder: ((context, animation, secondaryAnimation, child) => FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOutCubic).animate(animation),
+                      child: child,
+                    )),
+              ),
             ),
             GoRoute(
               path: SearchScreen.routename,
-              builder: (context, state) => const SearchScreen(),
+              pageBuilder: (context, state) => CustomTransitionPage(
+                key: state.pageKey,
+                transitionDuration: const Duration(milliseconds: 400),
+                child: const SearchScreen(),
+                transitionsBuilder: ((context, animation, secondaryAnimation, child) => FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOutCubic).animate(animation),
+                      child: child,
+                    )),
+              ),
             ),
             GoRoute(
               path: NotificationScreen.routename,
-              builder: (context, state) => const NotificationScreen(),
+              pageBuilder: (context, state) => CustomTransitionPage(
+                key: state.pageKey,
+                transitionDuration: const Duration(milliseconds: 400),
+                child: const NotificationScreen(),
+                transitionsBuilder: ((context, animation, secondaryAnimation, child) => FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOutCubic).animate(animation),
+                      child: child,
+                    )),
+              ),
             ),
             GoRoute(
               path: ProfileScreen.routename,
-              builder: (context, state) => const ProfileScreen(),
+              pageBuilder: (context, state) => CustomTransitionPage(
+                key: state.pageKey,
+                transitionDuration: const Duration(milliseconds: 400),
+                child: const ProfileScreen(),
+                transitionsBuilder: ((context, animation, secondaryAnimation, child) => FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOutCubic).animate(animation),
+                      child: child,
+                    )),
+              ),
             ),
           ]),
     ],

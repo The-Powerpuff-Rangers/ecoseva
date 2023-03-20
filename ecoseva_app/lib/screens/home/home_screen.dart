@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ecoseva_app/providers/profile_providers.dart';
 import 'package:ecoseva_app/screens/home/widgets/graph_card.dart';
 import 'package:ecoseva_app/screens/home/widgets/group_card.dart';
 import 'package:ecoseva_app/screens/home/widgets/info_card.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,6 +17,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
+    final currentUser = ref.watch(currentUserProvider);
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: AppColors.darkGreen,
@@ -38,16 +39,49 @@ class HomeScreen extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 40),
-                      child: AutoSizeText(
-                        'Hello, John Doe',
-                        style: textTheme.headlineMedium?.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w300,
+                    // currentUser.whenData((data) => Padding(
+                    //       padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 40),
+                    //       child: AutoSizeText(
+                    //         'Hello, ${data.name}',
+                    //         style: textTheme.headlineMedium?.copyWith(
+                    //           color: Colors.white,
+                    //           fontWeight: FontWeight.w300,
+                    //         ),
+                    //       ),
+                    //     )),
+                    currentUser.when(
+                      data: (data) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 40),
+                        child: AutoSizeText(
+                          'Hello, ${data.name}',
+                          style: textTheme.headlineMedium?.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                      error: (error, stackTrace) => const SizedBox.shrink(),
+                      loading: () => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 40),
+                        child: AutoSizeText(
+                          'Hello,',
+                          style: textTheme.headlineMedium?.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300,
+                          ),
                         ),
                       ),
                     ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 40),
+                    //   child: AutoSizeText(
+                    //     'Hello, John Doe',
+                    //     style: textTheme.headlineMedium?.copyWith(
+                    //       color: Colors.white,
+                    //       fontWeight: FontWeight.w300,
+                    //     ),
+                    //   ),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40.0),
                       child: Center(

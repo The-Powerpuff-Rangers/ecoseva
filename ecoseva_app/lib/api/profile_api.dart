@@ -12,7 +12,7 @@ class ProfileProvider {
     try {
       final result = await client.call(RequestType.get, '/user-data', {});
       final Profile profile = Profile.fromMap(result.data);
-      log(profile.toString());
+      // log(profile.toString());
       return profile;
     } catch (e) {
       log(e.toString());
