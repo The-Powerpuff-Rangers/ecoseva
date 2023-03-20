@@ -94,15 +94,7 @@ Everyone learned something.
 
 ## Future Scopes
 
-Although this project is ready, there is always scope for more improvement
 
-- We will try to add more poses into our yoga detection system.
-
-- We will add feature to integrate with more smart wearable systems like wear os, apple os, samsung wearables, etc.
-
-- We will add nutrition profile of our recipies and add more features like calorie tracking.
-
-- Nutrition profile analysis using custom neural network trained on NHANES OpenSource Dataset.
 
 ## Screenshots Time
 
