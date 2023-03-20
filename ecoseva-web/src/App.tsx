@@ -19,7 +19,7 @@ const dummyData = {
 };
 
 function App() {
-  const [user, setUser] = useState<any>({});
+  const [user, setUser] = useState<object>({});
   return (
     <div className="flex flex-col justify-between">
       <UserContext.Provider value={dummyData}>

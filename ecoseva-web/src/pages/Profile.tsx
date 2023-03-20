@@ -51,10 +51,13 @@ const Profile = () => {
               </label>
               <input
                 type="text"
-                className="w-[20em] px-3 py-2 rounded-xl bg-white border-2 border-black outline-none"
+                className="w-[20em] px-3 py-2 rounded-xl bg-white border-2 border-black outline-none disabled"
                 id="dob"
                 value={data.dob}
-                disabled
+                onChange={(e) => {
+                  setData({ ...data, dob: e.target.value });
+                }}
+                disabled={isEdit ? false : true}
               />
             </div>
             <div className="flex flex-col items-start">
@@ -65,7 +68,10 @@ const Profile = () => {
                 type="text"
                 className="w-[20em] px-3 py-2 rounded-xl bg-white border-2 border-black outline-none"
                 value={data.phone}
-                disabled
+                onChange={(e) => {
+                  setData({ ...data, dob: e.target.value });
+                }}
+                disabled={isEdit ? false : true}
               />
             </div>
             <div className="flex flex-col items-start">
@@ -76,7 +82,10 @@ const Profile = () => {
                 type="email"
                 className="w-[20em] px-3 py-2 rounded-xl bg-white border-2 border-black outline-none"
                 value={data.email}
-                disabled
+                onChange={(e) => {
+                  setData({ ...data, dob: e.target.value });
+                }}
+                disabled={isEdit ? false : true}
               />
             </div>
             {isEdit ? (

@@ -8,7 +8,7 @@ interface CardProps {
 
 const Card: FunctionComponent<CardProps> = ({ name, desc }) => {
   return (
-    <div className="w-[25vw] flex flex-col bg-white py-10 px-8 shadow-2xl gap-4">
+    <div className="w-[25vw] flex flex-col bg-white py-10 px-8 shadow-2xl rounded-md gap-4">
       <div className="flex">
         <img src={personIcon} alt="personIcon" className="scale-75 w-6 mr-4" />
         <h1>{name}</h1>
