@@ -23,7 +23,7 @@ class Client {
   }) {
     dio.options.baseUrl = "$endpoint/api";
     dio.options.headers['Content-Type'] = 'application/json';
-    dio.options.headers['Bearer'] = token?.accessToken;
+    dio.options.headers['Authorization'] = token == null ? null : 'Bearer ${token?.accessToken}';
   }
 
   Future<Response> call(RequestType type, String path, Map<String, dynamic> data) async {
