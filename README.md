@@ -58,7 +58,11 @@ Our solution also provides people with an app and website to find out their near
 
 ## How we built it?
 
-  The mobile app is built using Flutter. The backend is built using Django and the AI model is built using Keras and Tensorflow. The backend is dockerised and deployed on DigitalOcean.
+The mobile app is built using Flutter. The backend is built using Django and the AI model is built using Keras and Tensorflow. The backend is dockerised and deployed on DigitalOcean.
+
+To develop our proof of concept, we utilized cardboard for the casing, which is an easily accessible and manageable material. Our current design incorporates one IR sensor, two ultrasonic sensors, two micro servos, and two Arduino Uno R3s.
+
+We implemented the IR sensor to create a touchless lid for our dustbin by utilizing a servo motor to open and close it. The two ultrasonic sensors were employed to calculate the proportion of both the biodegradable and non-biodegradable sections of the dustbin. This helps prevent the issue of overflowing in our waste segregation unit. The final servo motor operates an internal flap, which aids in determining the correct trash bin for the waste to be deposited into.
 
 ## Challenges we ran into?
 
@@ -70,7 +74,7 @@ Even though our team had knowledge of various techstacks, we still had quite a h
   
 [Khushiyant](https://github.com/Khushiyant) - He worked on designing the UI in Figma and that it was his first time using the software. He also dockerised the application which was a difficult task as he had to compose two backends.
 
-[Vidhu](https://github.com/Kranium2002) - He worked on the YOGA AI model and using movenet was a new challenge for him. Making the model compatible with NodeJs and resolving errors was also a challenging task.
+[Vidhu](https://github.com/Kranium2002) - For him, it was creating and managing the arduino side of the project and incorporating all the sensors into one package to be used by our custom machine learning model
   
 ## Accomplishments that we're proud of?
 
@@ -78,7 +82,7 @@ We are proud that this is our first IoT project and we are able to make a workin
 
 Successfully integrating the classification model which allows to segregate waste into two categories: biodegradable and non-biodegradable.
 
-sending data back and forth between the app and the backend and the backend and the device.
+Sending data back and forth between the app and the backend and the backend and the device.
 
 ## What we learned?
 
@@ -90,11 +94,17 @@ Everyone learned something.
 
 - **Khushiyant** learned more about Docker and web scraping.
 
-- **Vidhu** learned how to use MoveNet and how to make it compatible with a Node backend.
+- **Vidhu** learned how to use Arduino with machine learning.
 
 ## Future Scopes
 
+The future scope of the project could involve enhancing the current design by incorporating additional features and technologies. For instance:
 
+Cloud Connectivity: The dustbin could be connected to the cloud to facilitate seamless data transfer, analysis, and storage. This could aid in the creation of a more efficient waste management system.
+
+Renewable Energy Integration: Solar panels or other renewable energy sources could be incorporated to power the sensors and microcontrollers.
+
+Smart Routing System: The dustbin could be integrated into a smart routing system that enables the collection and disposal of waste more efficiently.
 
 ## Screenshots Time
 
@@ -102,11 +112,9 @@ Everyone learned something.
 
 ## Revenue Point
   
-We will charge the buyer of these dustbins on a per unit basis.
+Our revenue model involves charging buyers on a per unit basis for the dustbins. Additionally, we will offer a maintenance service plan to assist our B2B clients with data drifting issues.
 
-We will also include a maintenance service plan for the product to help with data drifting (explain data drifting) for our b2b clients.
-
-Now our business model is not based on the big coloured dustbins that we see for bulk waste collection, we base our model on the water bottle recycling stations which are currently being used in public places such as airports.
+It's important to note that our business model is distinct from that of the traditional large, colored dustbins used for bulk waste collection. Instead, we draw inspiration from the water bottle recycling stations that are commonly found in public areas like airports.
 
 ## License
 
