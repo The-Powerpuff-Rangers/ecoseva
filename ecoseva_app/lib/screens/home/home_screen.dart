@@ -39,16 +39,6 @@ class HomeScreen extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    // currentUser.whenData((data) => Padding(
-                    //       padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 40),
-                    //       child: AutoSizeText(
-                    //         'Hello, ${data.name}',
-                    //         style: textTheme.headlineMedium?.copyWith(
-                    //           color: Colors.white,
-                    //           fontWeight: FontWeight.w300,
-                    //         ),
-                    //       ),
-                    //     )),
                     currentUser.when(
                       data: (data) => Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 40),
@@ -72,22 +62,14 @@ class HomeScreen extends ConsumerWidget {
                         ),
                       ),
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 40),
-                    //   child: AutoSizeText(
-                    //     'Hello, John Doe',
-                    //     style: textTheme.headlineMedium?.copyWith(
-                    //       color: Colors.white,
-                    //       fontWeight: FontWeight.w300,
-                    //     ),
-                    //   ),
-                    // ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                      child: Center(
-                          child: Column(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               GraphCard(
                                 title: 'Nearest',
@@ -95,19 +77,28 @@ class HomeScreen extends ConsumerWidget {
                                 primaryColor: AppColors.parrotGreen,
                                 dataMap: const {'a': 70, 'b': 30},
                               ),
-                              const SizedBox(width: 10),
                               GraphCard(
                                 title: 'Capacity',
                                 centerText: '63 %',
                                 primaryColor: AppColors.red,
                                 dataMap: const {'a': 63, 'b': 37},
                               ),
-                              const SizedBox(width: 10),
                             ],
+                          ),
+                          const SizedBox(height: 15),
+                          GraphCard(
+                            title: 'Capacity',
+                            centerText: '63 %',
+                            primaryColor: AppColors.red,
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                            ),
+                            dataMap: const {'a': 63, 'b': 37},
                           ),
                           const InfoCard(),
                         ],
-                      )),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Padding(

@@ -15,8 +15,9 @@ class InfoCard extends ConsumerWidget {
       return Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(vertical: 8),
-        margin: const EdgeInsets.symmetric(horizontal: 8),
-        decoration: BoxDecoration(color: AppColors.lightviolet, borderRadius: BorderRadius.circular(15)),
+        decoration: BoxDecoration(
+            color: AppColors.lightviolet,
+            borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
