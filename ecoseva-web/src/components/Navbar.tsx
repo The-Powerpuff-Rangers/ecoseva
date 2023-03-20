@@ -20,10 +20,10 @@ function Navbar() {
       <div className="flex flex-1 items-center justify-between">
         <input
           type="text"
-          className="p-2 rounded-lg border-2 w-1/2"
+          className="p-2 rounded-lg border-2 w-1/2 outline-none"
           placeholder="Search"
         />
-        <Link to="/">
+        <Link to="/profile">
           <img
             src={porofileImg}
             alt="profileImg"

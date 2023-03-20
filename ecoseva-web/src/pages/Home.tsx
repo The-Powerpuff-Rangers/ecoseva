@@ -4,7 +4,7 @@ import Card from "../components/Card";
 
 function Home() {
   return (
-    <div>
+    <div className="mb-24">
       <div className="flex justify-center items-center pl-20 mb-10">
         <div>
           <h1 className="font-bold text-left text-6xl mb-5">
