@@ -28,8 +28,12 @@ An innovative solution for effective and sustainable waste management.
 - [License](#license)
 
 ## Inspiration
-  
-We recently visited Goa a few weeks ago. We visited some of the most popular beaches in Goa but we noticed something that didn't felt right. We found the there was a single trash can dumping for both bio degradable and non bio degradable garbages. Moreover while vising the city, we found that there were seperate trash cans but the content inside it didn't matched according to the type of trash can. We also noticed overfilled trash cans and we couldn't find a place to throw garbage.
+
+During our visit to Goa, we noticed a pressing need for a modern waste management system. We observed that the existing waste disposal system was inadequate, with a single trash can being used to dump both biodegradable and non-biodegradable waste. We also found that even in the areas where separate bins were provided, the contents inside them did not correspond to the intended waste types. Moreover, overfilled trash cans were a common sight, and there were no designated areas to dispose of waste.
+
+This experience inspired us to take action and promote waste segregation. We realized that with the help of modern technology, we could make a significant impact in waste management. Specifically, we could leverage the power of AI and computer vision to build advanced waste segregation units. These units could identify and separate different types of waste automatically, thereby reducing the risk of contamination and increasing the efficiency of waste management.
+
+By integrating these AI-based waste segregation units into existing waste management systems, we could significantly reduce the amount of non-biodegradable waste and promote recycling. This would not only make our surroundings cleaner and more hygienic but would also promote sustainability and a healthier environment for all.
 
 ## What it does?
 
