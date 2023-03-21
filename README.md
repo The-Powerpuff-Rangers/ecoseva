@@ -62,6 +62,8 @@ Our solution also provides people with an app and website to find out their near
 
 ## How we built it?
 
+<p align="center"> <img src="https://user-images.githubusercontent.com/69671407/226506923-9757c8dc-aee1-457c-b089-aecad33d8580.png" width=550px> </p>
+
 The mobile app is built using Flutter. The backend is built using Django and the AI model is built using Keras and Tensorflow. The backend is dockerised and deployed on DigitalOcean.
 
 To develop our proof of concept, we utilized cardboard for the casing, which is an easily accessible and manageable material. Our current design incorporates one IR sensor, two ultrasonic sensors, two micro servos, and two Arduino Uno R3s.
