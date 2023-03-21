@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import "./App.css";
@@ -8,31 +8,38 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
+import Axios from "axios";
+import AuthService from "./services/auth.service";
 
-export const UserContext = createContext({});
-
-const dummyData = {
-  name: "Harsh Sharma",
-  email: "test@gmail.com",
-  dob: "01/01/2000",
-  phone: "+91 1234567890",
-};
+interface User {
+  email: string;
+  password: string;
+  name: string;
+  phone: string;
+  access_token: string;
+  refresh_token: string;
+}
 
 function App() {
-  const [user, setUser] = useState<object>({});
+  const [user, setUser] = useState<User>(AuthService.getCurrentUser());
+
+  useEffect(() => {
+    return () => {
+      setUser(AuthService.getCurrentUser());
+    };
+  }, [user]);
+
   return (
     <div className="flex flex-col justify-between">
-      <UserContext.Provider value={dummyData}>
-        {dummyData && <Navbar />}
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/register" element={<SignUp />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/dashboard" element={<Dashboard />}></Route>
-        </Routes>
-        {dummyData && <Footer />}
-      </UserContext.Provider>
+      {user && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/register" element={<SignUp />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
+      </Routes>
+      {user && <Footer />}
     </div>
   );
 }

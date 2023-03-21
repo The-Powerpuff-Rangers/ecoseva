@@ -2,14 +2,21 @@ import React, { useState, useContext } from "react";
 import ProfilePageImage from "../assets/ProfilePageImage.png";
 import profileImg from "../assets/Jumping.png";
 import editIcon from "../assets/pencil-01.png";
-import { UserContext } from "../App";
+import { useNavigate } from "react-router-dom";
+import AuthService from "../services/auth.service";
 
 const Profile = () => {
-  const [data, setData] = useState<any>(useContext(UserContext));
+  const navigate = useNavigate();
+  const [name, setName] = useState<string>("John Doe");
   const [dob, setDob] = useState<string>("1 Jan 2002");
   const [phone, setPhone] = useState<string>("+91 1234567890");
   const [email, setEmail] = useState<string>("sample@gmail.com");
   const [isEdit, setIsEdit] = useState<boolean>(false);
+
+  const handleLogout = async () => {
+    await AuthService.logout();
+    navigate("/login");
+  };
   return (
     <div className="flex justify-between">
       <div className="py-16 px-28 flex flex-col items-baseline">
@@ -24,7 +31,7 @@ const Profile = () => {
           </div>
           <div className="flex flex-col justify-center items-baseline">
             <div className="flex gap-4">
-              <span className="font-bold text-2xl">{data.name}</span>
+              <span className="font-bold text-2xl">{name}</span>
               <button
                 onClick={(e) => {
                   setIsEdit(!isEdit);
@@ -53,9 +60,9 @@ const Profile = () => {
                 type="text"
                 className="w-[20em] px-3 py-2 rounded-xl bg-white border-2 border-black outline-none disabled"
                 id="dob"
-                value={data.dob}
+                value={dob}
                 onChange={(e) => {
-                  setData({ ...data, dob: e.target.value });
+                  setDob(e.target.value);
                 }}
                 disabled={isEdit ? false : true}
               />
@@ -67,9 +74,9 @@ const Profile = () => {
               <input
                 type="text"
                 className="w-[20em] px-3 py-2 rounded-xl bg-white border-2 border-black outline-none"
-                value={data.phone}
+                value={phone}
                 onChange={(e) => {
-                  setData({ ...data, dob: e.target.value });
+                  setPhone(e.target.value);
                 }}
                 disabled={isEdit ? false : true}
               />
@@ -81,20 +88,23 @@ const Profile = () => {
               <input
                 type="email"
                 className="w-[20em] px-3 py-2 rounded-xl bg-white border-2 border-black outline-none"
-                value={data.email}
+                value={email}
                 onChange={(e) => {
-                  setData({ ...data, dob: e.target.value });
+                  setEmail(e.target.value);
                 }}
                 disabled={isEdit ? false : true}
               />
             </div>
             {isEdit ? (
-              <button className="bg-[#EA4335] w-28 font-medium py-2 px-3 rounded-lg shadow-lg">
+              <button
+                type="submit"
+                className="bg-[#EA4335] w-28 font-medium py-2 px-3 rounded-lg shadow-lg"
+              >
                 Save
               </button>
             ) : (
               <button
-                type="submit"
+                onClick={handleLogout}
                 className="bg-[#EA4335] w-28 font-medium py-2 px-3 rounded-lg shadow-lg"
               >
                 Logout

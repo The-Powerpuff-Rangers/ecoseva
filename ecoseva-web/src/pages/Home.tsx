@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import globe from "../assets/globe.gif";
 import eco from "../assets/environmentGif.gif";
 import mobile from "../assets/mobile.gif";
+import Chat from "./Chat";
 import "aos/dist/aos.css";
 
 function Home() {

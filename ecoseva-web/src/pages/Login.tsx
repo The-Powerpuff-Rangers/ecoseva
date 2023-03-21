@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+// import { history } from "react-router-dom";
 import loginPageImg from "../assets/Side Image.png";
 import orImg from "../assets/OR.png";
 import googleLogo from "../assets/Google.png";
+import Axios from "axios";
+import AuthService from "../services/auth.service";
 
 function Login() {
+  const navigate = useNavigate();
+  const [user, setUser] = React.useState({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(user);
+
+    const userData = await AuthService.login(user);
+    console.log(userData);
+    return navigate("/");
+  };
+
   return (
     <div className="bg-slate-50 min-h-screen flex flex-col">
       <div className="flex flex-grow justify-center items-center">
@@ -17,18 +36,26 @@ function Login() {
             <p className="text-[#C4C4C4] mb-4">Good to see you back!</p>
             <h1 className="text-2xl font-semibold">Login</h1>
             <form
-              action="/login"
+              onSubmit={handleSubmit}
               className="flex flex-col justify-center items-center gap-8 my-4"
             >
               <input
                 type="text"
                 placeholder="Email ID"
                 className="w-full border-b-[1px] border-black outline-none placeholder:text-sm"
+                value={user.email}
+                onChange={(e) => {
+                  setUser({ ...user, email: e.target.value });
+                }}
               />
               <input
                 type="password"
                 placeholder="Password"
                 className="w-full border-b-[1px] border-black outline-none placeholder:text-sm"
+                value={user.password}
+                onChange={(e) => {
+                  setUser({ ...user, password: e.target.value });
+                }}
               />
               <button
                 type="submit"
