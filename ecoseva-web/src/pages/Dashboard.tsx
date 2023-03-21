@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "../assets/Grid.png";
 import dashBoardImg from "../assets/Illustration 1.png";
 import pieChart from "../assets/Glance.png";
@@ -7,11 +7,22 @@ import DustbinGroup from "../components/DustbinGroup";
 import addGroupButton from "../assets/plus-square.png";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import EcosevaService from "../service/ecoseva.service";
 
-const dustbins = ["Dustbin 1", "Dustbin 2", "Dustbin 3", "Dustbin 4"];
+const dustbins = ["Dustbin 1", "Dustbin 2"];
 
 const Dashboard = () => {
   const percentage = 66;
+  // const [dustbins, setDustbins] = useState([]);
+
+  // useEffect(() => {
+  //   const getDustbins = async () => {
+  //     const dustins = await EcosevaService.getDustinList();
+  //     setDustbins(dustins);
+  //   };
+  //   getDustbins();
+  // }, []);
+
   return (
     <div>
       <img src={Grid} alt="" />

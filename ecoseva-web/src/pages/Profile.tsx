@@ -3,9 +3,11 @@ import ProfilePageImage from "../assets/ProfilePageImage.png";
 import profileImg from "../assets/Jumping.png";
 import editIcon from "../assets/pencil-01.png";
 import { useNavigate } from "react-router-dom";
-import AuthService from "../services/auth.service";
+import AuthService from "../service/auth.service";
+import { UserContext } from "../App";
 
 const Profile = () => {
+  const user = useContext(UserContext);
   const navigate = useNavigate();
   const [name, setName] = useState<string>("John Doe");
   const [dob, setDob] = useState<string>("1 Jan 2002");
@@ -15,7 +17,7 @@ const Profile = () => {
 
   const handleLogout = async () => {
     await AuthService.logout();
-    navigate("/login");
+    return navigate("/login");
   };
   return (
     <div className="flex justify-between">

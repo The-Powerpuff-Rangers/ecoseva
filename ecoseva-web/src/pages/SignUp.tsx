@@ -3,7 +3,7 @@ import SignupImg from "../assets/Side Image (1).png";
 import orImg from "../assets/OR.png";
 import googleLogo from "../assets/Google.png";
 import Axios from "axios";
-import AuthService from "../services/auth.service";
+import AuthService from "../service/auth.service";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {
@@ -35,7 +35,7 @@ function SignUp() {
       alert("User already exists");
       return;
     }
-    navigate("/");
+    return navigate("/");
   };
   return (
     <div className="bg-slate-50 min-h-screen flex flex-col">
