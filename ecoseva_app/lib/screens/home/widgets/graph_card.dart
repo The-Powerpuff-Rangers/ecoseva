@@ -31,14 +31,14 @@ class GraphCard extends ConsumerWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: AppColors.lightGreen,
-        borderRadius:  
-            borderRadius ?? BorderRadius.circular(15),
+        borderRadius: borderRadius ?? BorderRadius.circular(15),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           AutoSizeText(
             title,
+            softWrap: true,
             style: textTheme.bodyLarge,
           ),
           const SizedBox(height: 8),

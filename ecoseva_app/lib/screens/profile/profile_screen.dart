@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecoseva_app/api/authentication.dart';
+import 'package:ecoseva_app/gen/assets.gen.dart';
 import 'package:ecoseva_app/providers/auth_providers.dart';
 import 'package:ecoseva_app/providers/profile_providers.dart';
 import 'package:ecoseva_app/routes/route.dart';
@@ -48,7 +49,7 @@ class ProfileScreen extends ConsumerWidget {
                         child: CircleAvatar(
                           radius: 50.0,
                           backgroundColor: AppColors.parrotGreen.withOpacity(0.3),
-                          backgroundImage: const NetworkImage('https://i.pravatar.cc/300'),
+                          backgroundImage: Assets.images.maleAvatar.provider(),
                         ),
                       ),
                       const SizedBox(width: 16),
