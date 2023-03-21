@@ -88,13 +88,13 @@ class HomeScreen extends ConsumerWidget {
                           const SizedBox(height: 15),
                           GraphCard(
                             title: 'Non Bio Degradable',
-                            centerText: '63 %',
+                            centerText: '57 %',
                             primaryColor: AppColors.red,
                             borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(15),
                               topRight: Radius.circular(15),
                             ),
-                            dataMap: const {'a': 63, 'b': 37},
+                            dataMap: const {'a': 57, 'b': 43},
                           ),
                           const InfoCard(),
                         ],

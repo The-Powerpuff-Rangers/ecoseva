@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sizer/sizer.dart';
 // ignore: depend_on_referenced_packages
 import 'package:stack_trace/stack_trace.dart' as stack_trace;
 
@@ -54,11 +55,13 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final routes = ref.watch(routeProvider);
-    return MaterialApp.router(
-      title: 'Eco Sewa',
-      routerConfig: routes,
-      debugShowCheckedModeBanner: false,
-      theme: EcoSewaTheme.lightTheme,
+    return Sizer(
+      builder: (context,_,type) => MaterialApp.router(
+        title: 'Eco Sewa',
+        routerConfig: routes,
+        debugShowCheckedModeBanner: false,
+        theme: EcoSewaTheme.lightTheme,
+      ),
     );
   }
 }

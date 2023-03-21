@@ -35,7 +35,7 @@ class GroupCard extends ConsumerWidget {
             ),
             const DustbinTile(
               title: 'Dustbin 2',
-              percentage: '50%',
+              percentage: '30%',
             ),
           ],
         ),
