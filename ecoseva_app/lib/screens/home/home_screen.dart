@@ -87,7 +87,7 @@ class HomeScreen extends ConsumerWidget {
                           ),
                           const SizedBox(height: 15),
                           GraphCard(
-                            title: 'Capacity',
+                            title: 'Non Bio Degradable',
                             centerText: '63 %',
                             primaryColor: AppColors.red,
                             borderRadius: const BorderRadius.only(

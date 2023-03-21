@@ -7,7 +7,7 @@ enum RequestType { get, post, put, delete }
 
 final clientProvider = Provider<Client>((ref) {
   final Dio dio = Dio();
-  const String endpoint = 'http://localhost:8000';
+  const String endpoint = 'http://157.245.98.1:8000';
   final token = ref.watch(authTokenProvider).valueOrNull;
   return Client(endpoint: endpoint, dio: dio, token: token);
 });

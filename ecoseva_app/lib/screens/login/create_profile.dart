@@ -79,10 +79,9 @@ class CreateProfile extends ConsumerWidget {
                             };
                             log(data.toString());
 
-                            final result = await ref.read(authenticationProvider).signUp(data);
+                            await ref.read(authenticationProvider).signUp(data);
                             ref.invalidate(authTokenProvider);
                             ref.read(routeProvider).go(SplashScreen.routename);
-                          
                           },
                           textColor: Colors.white,
                           textTheme: ButtonTextTheme.primary,

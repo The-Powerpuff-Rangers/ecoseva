@@ -1,5 +1,4 @@
 import 'package:auto_size_text/auto_size_text.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -30,9 +29,14 @@ class GroupCard extends ConsumerWidget {
                 ),
               ),
             ),
-            const DustbinTile(),
-            const DustbinTile(),
-            const DustbinTile(),
+            const DustbinTile(
+              title: 'Dustbin 1',
+              percentage: '50%',
+            ),
+            const DustbinTile(
+              title: 'Dustbin 2',
+              percentage: '50%',
+            ),
           ],
         ),
       ),
