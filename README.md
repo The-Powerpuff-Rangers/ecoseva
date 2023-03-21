@@ -112,7 +112,7 @@ Smart Routing System: The dustbin could be integrated into a smart routing syste
 
 ## Screenshots Time
 
-  <img src =".github/assets/Splash Screen.png" height=450px ><img src =".github/assets/Home.png" height=450px ><img src =".github/assets/Sign Up.png" height=450px ><img src =".github/assets/Profile.png" height=450px ><img src =".github/assets/Notifcations.png" height=450px ><img src =".github/assets/Login.png" height=450px >
+  <img src =".github/assets/Home.png" height=450px ><img src =".github/assets/Sign Up.png" height=450px ><img src =".github/assets/Profile.png" height=450px ><img src =".github/assets/Login.png" height=450px >
 
 ## Revenue Point
   
