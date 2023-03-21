@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pie_chart/pie_chart.dart';
@@ -13,12 +12,15 @@ class GraphCard extends ConsumerWidget {
   final String centerText;
   final Map<String, double> dataMap;
   final Color primaryColor;
+
+  final BorderRadiusGeometry? borderRadius;
   const GraphCard({
     super.key,
     required this.centerText,
     required this.title,
     required this.dataMap,
     required this.primaryColor,
+    this.borderRadius,
   });
 
   @override
@@ -29,13 +31,14 @@ class GraphCard extends ConsumerWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: AppColors.lightGreen,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: borderRadius ?? BorderRadius.circular(15),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           AutoSizeText(
             title,
+            softWrap: true,
             style: textTheme.bodyLarge,
           ),
           const SizedBox(height: 8),

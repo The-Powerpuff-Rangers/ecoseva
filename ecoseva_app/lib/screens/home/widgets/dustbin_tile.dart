@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DustbinTile extends ConsumerWidget {
-  const DustbinTile({super.key});
+  final String title;
+  final String percentage;
+  const DustbinTile({super.key, required this.title, required this.percentage});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -13,12 +15,12 @@ class DustbinTile extends ConsumerWidget {
       child: Row(
         children: [
           AutoSizeText(
-            'Dustbin',
+            title,
             style: textTheme.bodyLarge,
           ),
           const Spacer(),
           AutoSizeText(
-            '63%',
+            percentage,
             style: textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
           )
         ],

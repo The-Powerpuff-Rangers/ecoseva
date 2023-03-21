@@ -35,6 +35,7 @@ class TextFieldWidget extends ConsumerWidget {
             child: TextFormField(
               controller: controller,
               obscureText: !isVisible,
+              validator: (value) => value!.isEmpty ? 'Please enter some text' : null,
               enableIMEPersonalizedLearning: true,
               enableInteractiveSelection: true,
               enableSuggestions: true,

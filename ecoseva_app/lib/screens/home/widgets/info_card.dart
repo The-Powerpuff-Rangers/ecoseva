@@ -14,27 +14,33 @@ class InfoCard extends ConsumerWidget {
     return LayoutBuilder(builder: (context, size) {
       return Container(
         alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        margin: const EdgeInsets.symmetric(horizontal: 8),
-        decoration: BoxDecoration(color: AppColors.lightviolet, borderRadius: BorderRadius.circular(15)),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+        decoration: BoxDecoration(
+            color: AppColors.lightviolet,
+            borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Assets.icons.bulb.image(),
             const SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AutoSizeText(
-                  'Did you Know ?',
-                  style: textTheme.bodyLarge,
-                ),
-                AutoSizeText(
-                  'Et duo elitr dolores',
-                  style: textTheme.bodyMedium,
-                )
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AutoSizeText(
+                    'Did you Know ?',
+                    style: textTheme.bodyLarge,
+                  ),
+                  AutoSizeText(
+                    'As of 2021, the world generated over 2.01 billion tons of municipal solid waste annually',
+                    wrapWords: true,
+                    softWrap: true,
+                    overflow: TextOverflow.fade,
+                    style: textTheme.bodyMedium,
+                  )
+                ],
+              ),
             ),
           ],
         ),

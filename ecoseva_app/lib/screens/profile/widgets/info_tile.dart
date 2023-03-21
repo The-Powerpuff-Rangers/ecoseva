@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class InfoTile extends ConsumerWidget {
-  const InfoTile({super.key});
+  final String label;
+  final String value;
+  const InfoTile({super.key,required this.label,required this.value});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,7 +17,7 @@ class InfoTile extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AutoSizeText(
-            'Date of Birth',
+            label,
             style: textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w300),
           ),
           Container(
@@ -23,7 +25,7 @@ class InfoTile extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
             decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(10)),
             child: AutoSizeText(
-              '1 Jan 2002',
+              value,
               style: textTheme.titleMedium,
             ),
           )

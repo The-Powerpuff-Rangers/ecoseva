@@ -1,9 +1,8 @@
-
+import 'package:ecoseva_app/screens/login/create_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../common/login_type.dart';
 import '../main.dart';
 import '../screens/home/home_page.dart';
 import '../screens/home/home_screen.dart';
@@ -16,7 +15,6 @@ import '../screens/splash/splash_screen.dart';
 
 final routeProvider = Provider<GoRouter>((ref) {
   final authChecker = ref.watch(authProvider);
-  final loginState = ref.watch(loginTypeProvider);
   return GoRouter(
     initialLocation: '/',
     debugLogDiagnostics: true,
@@ -28,15 +26,13 @@ final routeProvider = Provider<GoRouter>((ref) {
 
       final isSplash = state.location == SplashScreen.routename;
       if (isSplash) {
-        return isAuth
-            ? HomeScreen.routename
-            : loginState == LoginType.login
-                ? LoginScreen.routename
-                : SignupScreen.routename;
+        return isAuth ? HomeScreen.routename : LoginScreen.routename;
       }
 
-      final isLoggingIn = state.location == LoginScreen.routename || state.location == SignupScreen.routename;
-      if (isLoggingIn) return isAuth ? HomeScreen.routename : null;
+      final isLoggingIn = state.location == LoginScreen.routename ||
+          state.location == SignupScreen.routename ||
+          state.location == CreateProfile.routename;
+      if (isLoggingIn) return isAuth ? HomeScreen.routename : state.subloc;
 
       return isAuth ? null : SplashScreen.routename;
     },
@@ -44,6 +40,10 @@ final routeProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/',
         builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: '/form-screen',
+        builder: (context, state) => const CreateProfile(),
       ),
       GoRoute(
         path: LoginScreen.routename,
@@ -70,25 +70,63 @@ final routeProvider = Provider<GoRouter>((ref) {
         ),
       ),
       ShellRoute(
-          builder: (BuildContext context, GoRouterState state, Widget child) {
-            return HomePage(child: child);
-          },
+          pageBuilder: (context, state,child) => CustomTransitionPage(
+                key: state.pageKey,
+                transitionDuration: const Duration(milliseconds: 400),
+                child:  HomePage(child: child),
+                transitionsBuilder: ((context, animation, secondaryAnimation, child) => FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOutCubic).animate(animation),
+                      child: child,
+                    )),
+              ),
           routes: [
             GoRoute(
               path: HomeScreen.routename,
-              builder: (context, state) => const HomeScreen(),
+              pageBuilder: (context, state) => CustomTransitionPage(
+                key: state.pageKey,
+                transitionDuration: const Duration(milliseconds: 400),
+                child: const HomeScreen(),
+                transitionsBuilder: ((context, animation, secondaryAnimation, child) => FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOutCubic).animate(animation),
+                      child: child,
+                    )),
+              ),
             ),
             GoRoute(
               path: SearchScreen.routename,
-              builder: (context, state) => const SearchScreen(),
+              pageBuilder: (context, state) => CustomTransitionPage(
+                key: state.pageKey,
+                transitionDuration: const Duration(milliseconds: 400),
+                child: const SearchScreen(),
+                transitionsBuilder: ((context, animation, secondaryAnimation, child) => FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOutCubic).animate(animation),
+                      child: child,
+                    )),
+              ),
             ),
             GoRoute(
               path: NotificationScreen.routename,
-              builder: (context, state) => const NotificationScreen(),
+              pageBuilder: (context, state) => CustomTransitionPage(
+                key: state.pageKey,
+                transitionDuration: const Duration(milliseconds: 400),
+                child: const NotificationScreen(),
+                transitionsBuilder: ((context, animation, secondaryAnimation, child) => FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOutCubic).animate(animation),
+                      child: child,
+                    )),
+              ),
             ),
             GoRoute(
               path: ProfileScreen.routename,
-              builder: (context, state) => const ProfileScreen(),
+              pageBuilder: (context, state) => CustomTransitionPage(
+                key: state.pageKey,
+                transitionDuration: const Duration(milliseconds: 400),
+                child: const ProfileScreen(),
+                transitionsBuilder: ((context, animation, secondaryAnimation, child) => FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOutCubic).animate(animation),
+                      child: child,
+                    )),
+              ),
             ),
           ]),
     ],
