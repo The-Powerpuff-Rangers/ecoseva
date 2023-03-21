@@ -99,7 +99,7 @@ Everyone learned something.
 
 - **Harsh** learned how to handle FitBit API and how to integrate AI with his app.
 
-- **Khushiyant** learned more about Docker and web scraping.
+- **Khushiyant** learned more about containerized server with Docker.
 
 - **Vidhu** learned how to use Arduino with machine learning.
 
