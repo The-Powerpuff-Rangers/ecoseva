@@ -62,7 +62,7 @@ Our solution also provides people with an app and website to find out their near
 
 ## How we built it?
 
-<p align="center"> <img src="https://user-images.githubusercontent.com/69671407/226506923-9757c8dc-aee1-457c-b089-aecad33d8580.png" width=550px> </p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/69671407/226506923-9757c8dc-aee1-457c-b089-aecad33d8580.png" width=50%> </p>
 
 The mobile app is built using Flutter. The backend is built using Django and the AI model is built using Keras and Tensorflow. The backend is dockerised and deployed on DigitalOcean.
 
@@ -71,6 +71,7 @@ To develop our proof of concept, we utilized cardboard for the casing, which is 
 We implemented the IR sensor to create a touchless lid for our dustbin by utilizing a servo motor to open and close it. The two ultrasonic sensors were employed to calculate the proportion of both the biodegradable and non-biodegradable sections of the dustbin. This helps prevent the issue of overflowing in our waste segregation unit. The final servo motor operates an internal flap, which aids in determining the correct trash bin for the waste to be deposited into.
 
 ## Challenges we ran into?
+<img src="https://user-images.githubusercontent.com/69671407/226508701-cc298d6c-dce9-4ede-9d83-0d8108f0f759.jpg" width=40%>
 
 Even though our team had knowledge of various techstacks, we still had quite a hurdles.
 
