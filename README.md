@@ -97,7 +97,7 @@ Everyone learned something.
 
 - **Biswa** learned about deploying and setting up a production server and making a complex UI.
 
-- **Harsh** learned how to handle FitBit API and how to integrate AI with his app.
+- **Harsh** learned how to build a application using Typescript in a short amount of time.
 
 - **Khushiyant** learned more about containerized server with Docker.
 
