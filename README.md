@@ -77,7 +77,7 @@ Even though our team had knowledge of various techstacks, we still had quite a h
 
 [Biswa](https://github.com/2002Bishwajeet) - For him, it was his first time creating such an extensive Flutter App with multiple modules and AI integration. He worked on UI and connecting the backend with the frontend. He also helped in setting up the backend in the digital ocean droplet.
 
-[Harsh](https://github.com/harshsH-28) - For him, working with docker was a first time experience and he had quite a bit difficulty integrating FitBit API in NodeJs. Along with Biswa he connected the backend with frontend.  
+[Harsh](https://github.com/harshsH-28) - For him, working with docker was a first time experience and he designed the UI of the whole website in 24 Hours. He worked with Typescript for the first time in a Hackathon and learnt many new concepts of Typescript along the whole journey. 
   
 [Khushiyant](https://github.com/Khushiyant) - He worked on designing the UI in Figma and that it was his first time using the software. He also dockerised the application which was a difficult task as he had to compose two backends.
 
